@@ -90,23 +90,21 @@ const groupBy = (peoples) => {
     let group = [];
 
     //Iterate through each element in array
-    for (let i = 0; i < peoples.length; i++) {
-
+    peoples.forEach(people => {
         // To find index of element which has same city as current object city
-        let cityindex = group.findIndex((ele) => { //It returns -1 if element is not exists
-            return ele.city == peoples[i].city;
-        })
+        const cityindex = group.findIndex(ele => ele.city == people.city); //It returns -1 if element is not exists
+
         // If that object existings then update it using its index or else push new object in array
         if (cityindex >= 0) {
             group[cityindex].count = group[cityindex].count + 1;
-            group[cityindex].people.push(peoples[i]);
+            group[cityindex].people.push(people);
         } else {
-            group.push({ "count": 1, "city": peoples[i].city, "people": [peoples[i]] });
+            group.push({ count: 1, city: people.city, people: [people] });
         }
 
-    }
+    });
 
     return group;
 }
 
-groupBy(peoples);
+console.log(groupBy(peoples));
