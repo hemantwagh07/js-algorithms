@@ -8,8 +8,8 @@ const person = [
 
 function sortByLastName(obj) {
     const compare = (a, b) => {
-        let [afname, alname] = a.name.split(' ');
-        let [bfname, blname] = b.name.split(' ');
+        let [, alname] = a.name.split(' ');
+        let [, blname] = b.name.split(' ');
         return alname < blname ? -1 : alname < blname ? 1 : 0
     }
     obj.sort(compare);
